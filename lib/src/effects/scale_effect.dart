@@ -23,6 +23,7 @@ class ScaleEffect extends Effect<Offset> {
     Offset? end,
     this.alignment,
     bool? transformHitTests,
+    this.filterQuality,
   })  : transformHitTests = transformHitTests ?? defaultTransformHitTests,
         super(
           begin: begin ?? (end == null ? defaultValue : neutralValue),
@@ -31,6 +32,7 @@ class ScaleEffect extends Effect<Offset> {
 
   final Alignment? alignment;
   final bool transformHitTests;
+  final FilterQuality? filterQuality;
 
   @override
   Widget build(
@@ -48,6 +50,7 @@ class ScaleEffect extends Effect<Offset> {
           scaleY: _normalizeScale(animation.value.dy),
           alignment: alignment ?? Alignment.center,
           transformHitTests: transformHitTests,
+          filterQuality: filterQuality,
           child: child,
         );
       },
@@ -73,6 +76,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
     Offset? end,
     Alignment? alignment,
     bool? transformHitTests,
+    FilterQuality? filterQuality,
   }) =>
       addEffect(ScaleEffect(
         delay: delay,
@@ -82,6 +86,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
         end: end,
         alignment: alignment,
         transformHitTests: transformHitTests,
+        filterQuality: filterQuality,
       ));
 
   /// Adds a [ScaleEffect] that scales the target horizontally between
@@ -94,6 +99,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
     double? end,
     Alignment? alignment,
     bool? transformHitTests,
+    FilterQuality? filterQuality,
   }) {
     begin ??=
         (end == null ? ScaleEffect.defaultScale : ScaleEffect.neutralScale);
@@ -106,6 +112,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
       end: ScaleEffect.neutralValue.copyWith(dx: end),
       alignment: alignment,
       transformHitTests: transformHitTests,
+      filterQuality: filterQuality,
     ));
   }
 
@@ -119,6 +126,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
     double? end,
     Alignment? alignment,
     bool? transformHitTests,
+    FilterQuality? filterQuality,
   }) {
     begin ??=
         (end == null ? ScaleEffect.defaultScale : ScaleEffect.neutralScale);
@@ -131,6 +139,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
       end: ScaleEffect.neutralValue.copyWith(dy: end),
       alignment: alignment,
       transformHitTests: transformHitTests,
+      filterQuality: filterQuality,
     ));
   }
 
@@ -144,6 +153,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
     double? end,
     Alignment? alignment,
     bool? transformHitTests,
+    FilterQuality? filterQuality,
   }) {
     begin ??=
         (end == null ? ScaleEffect.defaultScale : ScaleEffect.neutralScale);
@@ -156,6 +166,7 @@ extension ScaleEffectExtensions<T extends AnimateManager<T>> on T {
       end: Offset(end, end),
       alignment: alignment,
       transformHitTests: transformHitTests,
+      filterQuality: filterQuality,
     ));
   }
 }

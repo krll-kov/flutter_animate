@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [4.5.3] - 2025-06-03
+### Changed
+- added support for filterQuality in ScaleEffect
+
 ## [4.5.2] - 2024-11-25
 ### Changed
 - remove unnecessary visibility_detector dependency
